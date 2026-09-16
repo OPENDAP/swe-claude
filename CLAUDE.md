@@ -22,6 +22,7 @@ infer one silently.
 | `docs/constraints/implementation-constraints.md` | Hard boundaries on *how* — `IC-###` |
 | `docs/decisions/DECISIONS.md` | Why past calls were made — `ADR-###` |
 | `docs/bugs/BUG-LOG.md` | Deviations from intended behavior, report through root cause — `BUG-###` |
+| `docs/tasks/TASK-LOG.md` | Scoped maintenance/engineering work not tied to a feature or bug — `TASK-###` |
 | `docs/deep-dives/` | Persisted findings from code investigations, one file per question |
 | `plans/` | Output: one plan file per feature or bug fix, each citing the IDs above |
 
@@ -36,7 +37,8 @@ plan — don't rely on what they said earlier in the session, they may have chan
   works.
 - Prefixes: `FR` functional requirement, `NFR` non-functional requirement, `UC` use
   case, `IC` implementation constraint, `ADR` architecture/design decision, `BUG` a
-  logged deviation from intended behavior.
+  logged deviation from intended behavior, `TASK` a scoped maintenance/engineering
+  task that is neither new capability nor a correction.
 - Every plan phase or major step should cite the ID(s) it satisfies, e.g. `(FR-012,
   UC-003)`. A step with no citation is either scope creep or an uncaptured
   requirement — flag it, don't quietly do it.
@@ -44,6 +46,11 @@ plan — don't rely on what they said earlier in the session, they may have chan
   behavior, it describes a *violation* of it (against an existing FR/NFR/UC where one
   exists, or against an undocumented assumption when it doesn't). Don't force a bug
   into a feature plan's shape — see `plans/_template-bugfix.md`.
+- `TASK-###` is a third kind of ID: neither new capability like an FR/NFR/UC nor a
+  correction like a BUG — scoped engineering work (dependency bumps, removing dead
+  code or stale compile-time directives, retrofitting tests onto code that predates
+  them) that doesn't need requirement backing to be legitimate. Don't force it into
+  a feature or bugfix plan's shape — see `plans/_template-task.md`.
 
 ## The core discipline: don't invent
 
@@ -67,6 +74,7 @@ plan — don't rely on what they said earlier in the session, they may have chan
 | `/fix-bug <description or BUG-###>` | Logs a bug (or resumes one), investigates root cause read-only, drafts a bugfix plan |
 | `/deep-dive <area or question>` | Read-only investigation of existing code; checks it against the requirement docs and saves findings |
 | `/new-requirement` | Interviews you to add a new FR / NFR / UC / IC entry with the next sequential ID |
+| `/plan-task <description or TASK-###>` | Logs a maintenance/engineering task (or resumes one) and drafts a plan for it |
 | `/trace <ID>` | Reports everywhere an ID is referenced — docs, plans, code — and flags orphaned requirements |
 | `/audit-plan <plan file>` | Checks a plan's ID citations against the requirement docs; reports gaps and coverage, changes nothing |
 

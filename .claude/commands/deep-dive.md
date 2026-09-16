@@ -33,5 +33,8 @@ specific question.
 
 5. **Don't edit code or the requirement docs.** If the investigation surfaces a bug,
    hand off to `/fix-bug` with what you found rather than continuing to dig here. If it
-   surfaces a gap or drift worth formalizing, hand off to `/new-requirement`. If it was
-   investigation ahead of building something new, hand off to `/plan-feature`.
+   surfaces a gap or drift worth formalizing, hand off to `/new-requirement`. If it
+   surfaces mechanical cleanup or maintenance work — dead code, stale compile-time
+   directives, out-of-date dependencies, missing test coverage — hand off to
+   `/plan-task`. If it was investigation ahead of building something new, hand off to
+   `/plan-feature`.
