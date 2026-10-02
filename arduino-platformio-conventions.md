@@ -1,7 +1,11 @@
+<!-- Paste the body below into CLAUDE.md in place of the {{CONVENTIONS}} placeholder,
+     and drop or demote this H2 so CLAUDE.md keeps a single `## Conventions` heading. -->
+
 ## Conventions — Arduino / PlatformIO (C/C++)
 
-**Stack:** C++14 (bump to C++17 only if every target board's toolchain supports it —
-check before assuming), Arduino framework via PlatformIO. Target board(s)/MCU family:
+**Stack:** C++14 (verify each target toolchain actually builds it — older AVR
+toolchains default to gnu++11 — and bump to C++17 only if every target board supports
+it; check before assuming), Arduino framework via PlatformIO. Target board(s)/MCU family:
 `{{BOARD(S) — e.g. ATmega328P (Uno), ESP32-WROOM, SAMD21}}`.
 
 ### Project layout & `platformio.ini`
@@ -9,8 +13,8 @@ check before assuming), Arduino framework via PlatformIO. Target board(s)/MCU fa
 - Pin exact versions: `platform = espressif32@6.x.x`, not a bare `platform =
   espressif32`. An unpinned platform/toolchain update is a silent way to break a build
   that worked yesterday.
-- One `[env:...]` per physical target, plus a `[env:native]` (no `board =`, host
-  compiler) for anything hardware-independent — this is what makes off-device unit
+- One `[env:...]` per physical target, plus a `[env:native]` (`platform = native`, no
+  `board =`; uses the host compiler) for anything hardware-independent — this is what makes off-device unit
   testing possible at all.
 - Build flags: `-Wall -Wextra` always on; move to `-Werror` once the codebase is
   warning-clean, and don't silence a warning with a pragma without a comment saying
@@ -31,8 +35,9 @@ check before assuming), Arduino framework via PlatformIO. Target board(s)/MCU fa
 - No dynamic allocation after `setup()` on RAM-constrained boards (classic AVR,
   SAMD21, anything in the 2–32 KB RAM range): no `new`, no `malloc`, no `String`
   concatenation in a loop. Heap fragmentation on a device with a few KB of RAM is a
-  real, field-reported failure mode, not a style nitpick. Use fixed-size buffers or
-  `std::array` instead. On boards with a real heap (ESP32, Teensy, etc.) this relaxes,
+  real, field-reported failure mode, not a style nitpick. Use fixed-size buffers
+  (plain arrays, or `std::array` where the toolchain ships the C++ standard library —
+  classic AVR's typically doesn't) instead. On boards with a real heap (ESP32, Teensy, etc.) this relaxes,
   but allocation still never happens inside an ISR or a tight timing loop.
 - Avoid Arduino `String` in library/logic code — use `char[]` buffers or fixed spans.
   `String` is acceptable in top-level sketch glue code, not in reusable modules.

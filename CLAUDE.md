@@ -8,9 +8,11 @@
 
 This repo plans work from written requirements, not from conversation memory or
 assumption. Requirements, use cases, and constraints live in `docs/`. Plans that
-Claude produces live in `plans/`. Every plan traces back to specific requirement IDs.
-If a request has no requirement backing it, that's a signal to add one — not to
-infer one silently.
+Claude produces live in `plans/`. Every plan traces back to written IDs: a feature
+plan cites FR/NFR/UC/IC IDs, a bugfix plan cites a `BUG-###`, a task plan cites a
+`TASK-###` (bugfix and task plans may legitimately cite no FR/NFR/UC). If a *feature*
+request has no requirement backing it, that's a signal to add one — not to infer one
+silently.
 
 ## Read before planning anything
 
@@ -28,6 +30,14 @@ infer one silently.
 
 Read the requirement and constraint docs **in full** before drafting or revising a
 plan — don't rely on what they said earlier in the session, they may have changed.
+Also check `docs/decisions/DECISIONS.md` for any accepted ADR the design would
+contradict (flag it the way you'd flag an IC tension), and look in `docs/deep-dives/`
+for an existing note on the area before investigating it again.
+
+- Ignore `_EXAMPLE_` / `*-EXAMPLE` placeholder entries — they show the format; they
+  are not requirements.
+- Don't plan against a `Deprecated` entry; follow `Superseded by` to its replacement.
+  Call out any `Proposed` entry as not yet confirmed rather than treating it as settled.
 
 ## ID conventions
 
@@ -65,6 +75,13 @@ plan — don't rely on what they said earlier in the session, they may have chan
   explicitly** and ask how to proceed. Don't silently comply with the constraint by
   redesigning around it without flagging the tension, and don't silently ignore it.
 
+## Filling in templates and logs
+
+When you create a plan or log entry from a template: set `Status` to the single
+starting value (`Draft`, `Open`, or `Investigating`) — never copy the `A | B | C`
+option list; set `Created` / dates to today's actual date (run `date +%F` if you
+don't have it — never guess); and leave genuinely unknown fields `TBD`.
+
 ## Custom commands available in this repo
 
 | Command | Does |
@@ -77,6 +94,10 @@ plan — don't rely on what they said earlier in the session, they may have chan
 | `/plan-task <description or TASK-###>` | Logs a maintenance/engineering task (or resumes one) and drafts a plan for it |
 | `/trace <ID>` | Reports everywhere an ID is referenced — docs, plans, code — and flags orphaned requirements |
 | `/audit-plan <plan file>` | Checks a plan's ID citations against the requirement docs; reports gaps and coverage, changes nothing |
+
+The `requirements-reviewer` subagent (`.claude/agents/`) reviews the requirement and
+constraint docs for vague, untestable, conflicting, or dangling entries. Use it when
+asked to review or tighten those docs — it reports findings and never edits.
 
 ## Conventions
 

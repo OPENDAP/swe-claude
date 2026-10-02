@@ -9,7 +9,8 @@ Handle a bug: $ARGUMENTS
 
 1. **Resolve new vs. existing.** If `$ARGUMENTS` is a `BUG-###` ID already present in
    `docs/bugs/BUG-LOG.md`, read that entry and resume from wherever it left off (skip
-   to step 5 if root cause is already filled in, otherwise step 4). If `$ARGUMENTS` is
+   to step 6 if root cause is already filled in, otherwise step 5; never repeat step 4 —
+   the bug already has an ID). If `$ARGUMENTS` is
    empty, ask for a short description. Otherwise treat it as a new bug report.
 
 2. **For a new bug, interview for concrete reproduction — don't accept a vague

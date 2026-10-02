@@ -1,5 +1,5 @@
 ---
-description: Report every place an FR/NFR/UC/IC/ADR ID is referenced, and flag it if nothing references it yet
+description: Report every place an FR/NFR/UC/IC/ADR/BUG/TASK ID is referenced, and flag it if nothing references it yet
 argument-hint: <ID, e.g. FR-014>
 ---
 
@@ -14,7 +14,8 @@ If `$ARGUMENTS` is empty or doesn't look like a `PREFIX-###` ID, ask for one.
    `BUG-###`), or `docs/tasks/TASK-LOG.md` (for a `TASK-###`) and quote it briefly.
 
 2. **Search the whole repo for other references** — `docs/`, `plans/`, and any source
-   code or comments — for the literal ID string. Use `grep -rn` rather than guessing
+   code or comments — for the literal ID string. Use `grep -rnw --exclude-dir=.git` (`-w` so `FR-001` can't match inside `FR-0010`)
+   rather than guessing
    from memory.
 
 3. **Report, grouped by kind:**

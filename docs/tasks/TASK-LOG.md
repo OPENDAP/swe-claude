@@ -7,8 +7,10 @@
 
 # Task Log
 
-Convention: `TASK-###`, sequential, never renumbered. Status: `Open` → `In Progress`
-→ `Done` (or `Won't Do` / `Superseded by TASK-0XX`). Category is one of: Dependency
+Convention: `TASK-###`, sequential, never renumbered. Status: `Open` → `Plan Ready` →
+`In Progress` → `Done` (or `Won't Do` / `Superseded by TASK-0XX`). **Only the user sets
+`Done`** — it's a claim about verified work, not something to self-report from having
+written a plan. Category is one of: Dependency
 Update, Code Cleanup, Test Coverage, Build/Tooling, Documentation (add categories as
 needed).
 

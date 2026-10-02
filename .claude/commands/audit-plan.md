@@ -20,13 +20,15 @@ one candidate, confirm before proceeding rather than assuming.
    cite zero FR/NFR/UC — most maintenance work (dependency bumps, retrofitting
    tests) doesn't need requirement backing to be legitimate.
 
-2. **Extract every `FR-###` / `NFR-###` / `UC-###` / `IC-###` / `BUG-###` / `TASK-###`
-   cited anywhere in it.**
+2. **Extract every `FR-###` / `NFR-###` / `UC-###` / `IC-###` / `ADR-###` / `BUG-###` /
+   `TASK-###` cited anywhere in it.**
 
 3. **Verify each cited ID actually exists** in the current `docs/requirements/`,
-   `docs/constraints/`, `docs/bugs/BUG-LOG.md`, and `docs/tasks/TASK-LOG.md` files.
-   Flag any that don't — a typo, a renumbered ID, or an ID that was invented rather
-   than looked up.
+   `docs/constraints/`, `docs/decisions/DECISIONS.md`, `docs/bugs/BUG-LOG.md`, and
+   `docs/tasks/TASK-LOG.md` files. Flag any that don't — a typo, a renumbered ID, or an
+   ID that was invented rather than looked up. Also flag a cited entry whose Status is
+   `Deprecated` or `Superseded` (the plan rests on something no longer current), and
+   any ID that exists only as an `_EXAMPLE_` placeholder.
 
 4. **Flag uncited work.** Look at each phase's steps: if a phase does something with
    no ID citation anywhere near it, flag it — either it's scope creep that crept in
@@ -34,10 +36,12 @@ one candidate, confirm before proceeding rather than assuming.
    the requirement docs and should get one via `/new-requirement`.
 
 5. **Report coverage**, not just problems: which requirements relevant to this
-   feature area are cited, and — by cross-referencing `/trace`-style search — which
+   feature area are cited, and — by grepping the requirement docs for the plan's feature area — which
    related requirements exist but aren't mentioned in this plan at all. That's not
    automatically wrong (not every related requirement belongs in every plan) but it's
-   worth surfacing.
+   worth surfacing. For feature plans, also check that every ID cited inline in a phase
+   appears in the **Requirements traced** / **Constraints considered** sections, and
+   vice versa.
 
 6. **Change nothing.** This command produces a report. Whether to fix what it finds
    is the user's call, made in a separate step.
