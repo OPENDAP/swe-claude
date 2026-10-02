@@ -88,8 +88,8 @@ every new project.
 `.claude/` into a repo you already have (if it already has a `CLAUDE.md` or
 `.claude/settings.json`, merge rather than overwrite). Nothing in the core template
 assumes a particular language or stack — the `.claude/` folder and `docs/` folder are
-additive. Language-specific snippets (currently `arduino-platformio-conventions.md`)
-are optional: paste the one you want into the Conventions section of `CLAUDE.md`. Run `/init-planning`
+additive. Language-specific snippets (currently `arduino-platformio-conventions.md` and
+`cpp-conventions.md`) are optional: paste the one you want into the Conventions section of `CLAUDE.md`. Run `/init-planning`
 afterward to seed the requirement docs from the existing codebase and an interview,
 rather than starting from blank tables.
 
