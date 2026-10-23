@@ -78,7 +78,7 @@ for an existing note on the area before investigating it again.
 ## Filling in templates and logs
 
 When you create a plan or log entry from a template: set `Status` to the single
-starting value (`Draft`, `Open`, or `Investigating`) — never copy the `A | B | C`
+starting value (`Draft` for plans, `Open` for bug and task log entries) — never copy the `A | B | C`
 option list; set `Created` / dates to today's actual date (run `date +%F` if you
 don't have it — never guess); and leave genuinely unknown fields `TBD`.
 

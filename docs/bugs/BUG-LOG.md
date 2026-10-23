@@ -6,9 +6,11 @@
 # Bug Log
 
 Convention: `BUG-###`, sequential, never renumbered. Status: `Open` → `Investigating`
-→ `Fix Planned` → `Fixed` → (or `Won't Fix` / `Duplicate of BUG-0XX`). **Only the user
-sets a bug to `Fixed`** — that's a claim about verified deployed behavior, not
-something to self-report from having written a fix plan.
+→ `Fix Planned` → `Fixed` → (or `Won't Fix` / `Duplicate of BUG-0XX`). `Open` means
+logged with reproduction steps but root cause not yet looked at (`/fix-bug` sets it
+at step 4 and moves to `Investigating` at step 5; an entry logged by hand starts here
+too). **Only the user sets a bug to `Fixed`** — that's a claim about verified
+deployed behavior, not something to self-report from having written a fix plan.
 
 ---
 

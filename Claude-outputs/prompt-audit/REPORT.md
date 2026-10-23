@@ -65,3 +65,10 @@ FR and NFR tables have a `Status` column, but the interview never asks for it �
 - **"Changes nothing" is prose-only for `/trace`, `/audit-plan`, `/deep-dive`.** The only mechanically enforced read-only restriction in the repo is the reviewer subagent's `tools: Read, Grep, Glob`. That's probably fine given the explicit wording, but be aware the guarantee is instruction-level.
 - **`.claude/settings.json`** pre-approves Read/Edit only under `docs/**` and `plans/**`. `/init-planning` edits `CLAUDE.md`, so it will prompt — likely intended; noting it in case it isn't.
 - **Line wrapping.** A few lines in the patch exceed the files' ~88-column wrap where text was inserted mid-paragraph. Cosmetic.
+
+### Resolution (2026-10-22)
+
+- **Duplicate file:** resolved — `Claude-outputs/arduino-platformio-conventions.md` deleted.
+- **`Open` bug status:** kept. `/fix-bug` step 4 now logs entries as `Open` and step 5 moves them to `Investigating`; `BUG-LOG.md` defines `Open`; CLAUDE.md's template-fill rule now names `Draft` (plans) and `Open` (bug/task entries) as the starting values.
+- **"Changes nothing" / line wrapping:** accepted as-is.
+- **`.claude/settings.json`:** the template is for code repos where Claude reads and edits code, so the allow rules are widened from `docs/**` / `plans/**` to `Read(./**)` and `Edit(./**)` (Edit rules also cover Write). Plan mode still blocks edits. Bash commands (build/test) are not pre-approved — add project-specific rules such as `Bash(make test:*)` per repo.

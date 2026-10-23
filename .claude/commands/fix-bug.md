@@ -32,9 +32,11 @@ Handle a bug: $ARGUMENTS
 
 4. **Assign the next `BUG-###` ID** (read `docs/bugs/BUG-LOG.md`, find the highest
    existing number, increment) and append a new section following the existing
-   format, `Status: Investigating`.
+   format, `Status: Open` (logged with concrete reproduction steps; root cause not yet
+   looked at).
 
-5. **Investigate root cause, read-only.** Trace the actual code path involved. For
+5. **Investigate root cause, read-only.** First set the entry's status to
+   `Investigating`. Trace the actual code path involved. For
    anything beyond a narrow, localized bug — where understanding it means mapping a
    whole subsystem — use `/deep-dive` first and come back with findings rather than
    trying to hold a large investigation inline here. Fill in the `Root cause` field
