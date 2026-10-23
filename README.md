@@ -1,4 +1,4 @@
-# claude-swe-planning-template
+# swe-claude
 
 A Claude Code project template for **requirements-driven planning**: write your
 functional requirements, non-functional requirements, use cases, and implementation
