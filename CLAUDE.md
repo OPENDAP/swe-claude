@@ -82,6 +82,16 @@ starting value (`Draft` for plans, `Open` for bug and task log entries) — neve
 option list; set `Created` / dates to today's actual date (run `date +%F` if you
 don't have it — never guess); and leave genuinely unknown fields `TBD`.
 
+## Work logs on plans
+
+Every plan in `ai-plans/` ends with an append-only `## Work log` section (see the
+templates). The first entry, written when the plan is created, quotes the prompt
+that initiated it verbatim. After that, **whenever you do work on a plan** —
+revising it, investigating for it, implementing or verifying a phase, changing its
+status — append an entry before ending the session's work on it: a heading stamped
+with the output of `date '+%F %H:%M %Z'` (run it — never guess the time) and a short
+summary of what was done and what's left. Don't edit or reorder earlier entries.
+
 ## Branch & working-tree discipline
 
 Before making any change for a plan, task, or bug — a new plan file, a BUG-LOG or

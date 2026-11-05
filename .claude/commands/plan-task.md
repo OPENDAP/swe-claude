@@ -40,8 +40,14 @@ Handle a task: $ARGUMENTS
 5. **Draft the plan** using the shape in `ai-plans/_template-task.md`: scope (in/out),
    approach, and — for anything mechanical — how completeness gets checked (a
    `grep` count before and after, an enumerated list checked off) rather than "done
-   when it looks done." Write it to `ai-plans/task-<slug>-plan.md`. Confirm before
-   overwriting an existing file.
+   when it looks done." Give the `## Work log` section its first entry: a
+   `Plan created` heading stamped with the output of `date '+%F %H:%M %Z'` (run it —
+   never guess), the initiating prompt quoted verbatim (`/plan-task $ARGUMENTS`, plus
+   any other instructions the user gave in that message), and a one-to-three-line
+   summary of what was done. Write it to `ai-plans/task-<slug>-plan.md`. Confirm
+   before overwriting an existing file. When resuming a task whose plan already
+   exists, don't start a new work log — append a timestamped entry to the existing
+   one quoting the resuming prompt and summarizing what this session did.
 
 6. **Update the task's status to `Plan Ready`** in `ai-docs/tasks/TASK-LOG.md` and link
    the plan file. Leave `Done` for the user to set once the work actually lands and
