@@ -1,8 +1,28 @@
 {
   "permissions": {
+    "additionalDirectories": [
+      "swe-claude/ai-docs",
+      "swe-claude/ai-plans"
+    ],
     "allow": [
       "Read(./**)",
-      "Edit(./**)"
+      "Edit(./**)",
+      "Read(swe-claude/ai-docs/**)",
+      "Edit(swe-claude/ai-docs/**)",
+      "Read(swe-claude/ai-plans/**)",
+      "Edit(swe-claude/ai-plans/**)",
+      "Bash(mkdir -p ai-docs/*)",
+      "Bash(mkdir -p ai-plans/*)",
+      "Bash(touch ai-docs/*)",
+      "Bash(touch ai-plans/*)",
+      "Bash(rm ai-docs/*)",
+      "Bash(rm ai-plans/*)",
+      "Bash(rm -f ai-docs/*)",
+      "Bash(rm -f ai-plans/*)",
+      "Bash(mv ai-docs/*)",
+      "Bash(mv ai-plans/*)",
+      "Bash(cp ai-docs/*)",
+      "Bash(cp ai-plans/*)"
     ]
   }
 }
