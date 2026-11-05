@@ -1,5 +1,5 @@
 <!-- CONTRACT: deviations from intended behavior, tracked from report through root
-     cause to fix. Not a duplicate of docs/requirements/ — a bug means something
+     cause to fix. Not a duplicate of ai-docs/requirements/ — a bug means something
      already documented (or implicitly assumed) isn't holding true in practice.
      Delete the BUG-EXAMPLE section once you've seen the shape. -->
 
@@ -22,7 +22,7 @@ deployed behavior, not something to self-report from having written a fix plan.
 **Status:** Fix Planned
 **Reported:** YYYY-MM-DD
 **Related requirements:** FR-EXAMPLE, UC-EXAMPLE (violates the "time-limited" part of both)
-**Fix plan:** `plans/bugfix-reset-link-expiry-plan.md`
+**Fix plan:** `ai-plans/bugfix-reset-link-expiry-plan.md`
 
 **Reproduction steps:**
 1. Request a password reset

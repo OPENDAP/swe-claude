@@ -14,5 +14,5 @@ Priority: `Must` / `Should` / `Could` (MoSCoW). Status: `Proposed` / `Approved` 
 
 <!-- Add new rows via /new-requirement, or by hand — keep the table format. Each
      requirement should be a single testable statement, not a paragraph. If it needs
-     a paragraph, it's probably a use case (docs/requirements/use-cases.md) with this
+     a paragraph, it's probably a use case (ai-docs/requirements/use-cases.md) with this
      as one of its acceptance criteria. -->

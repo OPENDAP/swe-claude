@@ -7,8 +7,8 @@
 **What this project is:** {{ONE_LINE_DESCRIPTION}}
 
 This repo plans work from written requirements, not from conversation memory or
-assumption. Requirements, use cases, and constraints live in `docs/`. Plans that
-Claude produces live in `plans/`. Every plan traces back to written IDs: a feature
+assumption. Requirements, use cases, and constraints live in `ai-docs/`. Plans that
+Claude produces live in `ai-plans/`. Every plan traces back to written IDs: a feature
 plan cites FR/NFR/UC/IC IDs, a bugfix plan cites a `BUG-###`, a task plan cites a
 `TASK-###` (bugfix and task plans may legitimately cite no FR/NFR/UC). If a *feature*
 request has no requirement backing it, that's a signal to add one — not to infer one
@@ -18,20 +18,20 @@ silently.
 
 | File / folder | Holds |
 |---|---|
-| `docs/requirements/functional-requirements.md` | What the system must do — `FR-###` |
-| `docs/requirements/non-functional-requirements.md` | Quality attributes & targets — `NFR-###` |
-| `docs/requirements/use-cases.md` | Actor-driven flows — `UC-###` |
-| `docs/constraints/implementation-constraints.md` | Hard boundaries on *how* — `IC-###` |
-| `docs/decisions/DECISIONS.md` | Why past calls were made — `ADR-###` |
-| `docs/bugs/BUG-LOG.md` | Deviations from intended behavior, report through root cause — `BUG-###` |
-| `docs/tasks/TASK-LOG.md` | Scoped maintenance/engineering work not tied to a feature or bug — `TASK-###` |
-| `docs/deep-dives/` | Persisted findings from code investigations, one file per question |
-| `plans/` | Output: one plan file per feature or bug fix, each citing the IDs above |
+| `ai-docs/requirements/functional-requirements.md` | What the system must do — `FR-###` |
+| `ai-docs/requirements/non-functional-requirements.md` | Quality attributes & targets — `NFR-###` |
+| `ai-docs/requirements/use-cases.md` | Actor-driven flows — `UC-###` |
+| `ai-docs/constraints/implementation-constraints.md` | Hard boundaries on *how* — `IC-###` |
+| `ai-docs/decisions/DECISIONS.md` | Why past calls were made — `ADR-###` |
+| `ai-docs/bugs/BUG-LOG.md` | Deviations from intended behavior, report through root cause — `BUG-###` |
+| `ai-docs/tasks/TASK-LOG.md` | Scoped maintenance/engineering work not tied to a feature or bug — `TASK-###` |
+| `ai-docs/deep-dives/` | Persisted findings from code investigations, one file per question |
+| `ai-plans/` | Output: one plan file per feature or bug fix, each citing the IDs above |
 
 Read the requirement and constraint docs **in full** before drafting or revising a
 plan — don't rely on what they said earlier in the session, they may have changed.
-Also check `docs/decisions/DECISIONS.md` for any accepted ADR the design would
-contradict (flag it the way you'd flag an IC tension), and look in `docs/deep-dives/`
+Also check `ai-docs/decisions/DECISIONS.md` for any accepted ADR the design would
+contradict (flag it the way you'd flag an IC tension), and look in `ai-docs/deep-dives/`
 for an existing note on the area before investigating it again.
 
 - Ignore `_EXAMPLE_` / `*-EXAMPLE` placeholder entries — they show the format; they
@@ -55,12 +55,12 @@ for an existing note on the area before investigating it again.
 - `BUG-###` is a different kind of ID from the rest: it doesn't describe intended
   behavior, it describes a *violation* of it (against an existing FR/NFR/UC where one
   exists, or against an undocumented assumption when it doesn't). Don't force a bug
-  into a feature plan's shape — see `plans/_template-bugfix.md`.
+  into a feature plan's shape — see `ai-plans/_template-bugfix.md`.
 - `TASK-###` is a third kind of ID: neither new capability like an FR/NFR/UC nor a
   correction like a BUG — scoped engineering work (dependency bumps, removing dead
   code or stale compile-time directives, retrofitting tests onto code that predates
   them) that doesn't need requirement backing to be legitimate. Don't force it into
-  a feature or bugfix plan's shape — see `plans/_template-task.md`.
+  a feature or bugfix plan's shape — see `ai-plans/_template-task.md`.
 
 ## The core discipline: don't invent
 
@@ -106,7 +106,7 @@ one all happen on that item's branch.
 | Command | Does |
 |---|---|
 | `/init-planning` | First-time setup: interviews you and seeds the requirement docs for an existing or new codebase |
-| `/plan-feature <name or description>` | Reads the requirement docs, drafts a phased implementation plan in `plans/`, citing IDs throughout |
+| `/plan-feature <name or description>` | Reads the requirement docs, drafts a phased implementation plan in `ai-plans/`, citing IDs throughout |
 | `/fix-bug <description or BUG-###>` | Logs a bug (or resumes one), investigates root cause read-only, drafts a bugfix plan |
 | `/deep-dive <area or question>` | Read-only investigation of existing code; checks it against the requirement docs and saves findings |
 | `/new-requirement` | Interviews you to add a new FR / NFR / UC / IC entry with the next sequential ID |

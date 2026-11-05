@@ -1,5 +1,5 @@
 <!-- CONTRACT: WHY things are the way they are. Never a log of what happened (that's
-     git history / plans/) — only calls that could plausibly have gone another way,
+     git history / ai-plans/) — only calls that could plausibly have gone another way,
      with the reasoning captured so it isn't re-litigated from scratch in six months. -->
 
 # Decisions

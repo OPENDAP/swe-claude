@@ -1,4 +1,4 @@
-<!-- Shape for task plans written to plans/task-<slug>-plan.md by /plan-task.
+<!-- Shape for task plans written to ai-plans/task-<slug>-plan.md by /plan-task.
      This file itself is never a real plan — copy the shape, don't edit this one.
      Deliberately not the same shape as _template-plan.md: a task isn't new capability
      tied to FR/NFR/UC. Deliberately not the same shape as _template-bugfix.md:

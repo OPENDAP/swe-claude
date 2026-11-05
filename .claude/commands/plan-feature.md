@@ -9,9 +9,9 @@ If `$ARGUMENTS` is empty, ask for a short feature name or description and stop.
 
 ## Steps
 
-1. **Read every file in `docs/requirements/` and `docs/constraints/` in full**, right
+1. **Read every file in `ai-docs/requirements/` and `ai-docs/constraints/` in full**, right
    now — don't rely on what they said earlier in this session. They may have changed.
-   Also read `docs/decisions/DECISIONS.md`: a plan that reverses an accepted ADR must
+   Also read `ai-docs/decisions/DECISIONS.md`: a plan that reverses an accepted ADR must
    say so explicitly. Skip `_EXAMPLE_` / `*-EXAMPLE` placeholder entries.
 
 2. **Identify which existing `FR-###` / `NFR-###` / `UC-###` entries this feature
@@ -31,7 +31,7 @@ If `$ARGUMENTS` is empty, ask for a short feature name or description and stop.
    `/deep-dive` on it first and come back with findings rather than researching inline
    under time pressure to produce a plan.
 
-5. **Draft the plan using the shape in `plans/_template-plan.md`.** Concretely:
+5. **Draft the plan using the shape in `ai-plans/_template-plan.md`.** Concretely:
    - Every phase cites the FR/NFR/UC IDs it satisfies.
    - The "Constraints considered" section cites every relevant IC and states how the
      plan respects it.
@@ -40,7 +40,7 @@ If `$ARGUMENTS` is empty, ask for a short feature name or description and stop.
      violation.
    - Open questions are genuine unknowns, not gaps papered over with a guess.
 
-6. **Write the plan to `plans/<slug>-plan.md`**, where `<slug>` is the feature name in
+6. **Write the plan to `ai-plans/<slug>-plan.md`**, where `<slug>` is the feature name in
    kebab-case. (If you're in plan mode, present the plan and write the file once plan
    mode is exited or approved — don't try to write it from inside plan mode.) If that file already exists, ask before overwriting — don't clobber a
    plan that might be mid-review.

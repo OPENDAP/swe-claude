@@ -1,4 +1,4 @@
-<!-- Shape for bugfix plans written to plans/bugfix-<slug>-plan.md by /fix-bug.
+<!-- Shape for bugfix plans written to ai-plans/bugfix-<slug>-plan.md by /fix-bug.
      This file itself is never a real plan — copy the shape, don't edit this one.
      Deliberately not the same shape as _template-plan.md: a bug fix is corrective,
      not incremental delivery, so it doesn't need multiple phases in most cases. -->
@@ -42,7 +42,7 @@ What else touches the code being changed, and what could break. What existing te
 ## Verification
 
 How to confirm the fix actually works — ideally the original reproduction steps from
-`docs/bugs/BUG-LOG.md`, re-run and expected to now pass, plus a note on what test (new
+`ai-docs/bugs/BUG-LOG.md`, re-run and expected to now pass, plus a note on what test (new
 or existing) should guard against regression.
 
 ## Out of scope

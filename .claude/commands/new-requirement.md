@@ -10,9 +10,9 @@ Add a new requirement, use case, or constraint entry.
 1. **Determine the type.** If `$ARGUMENTS` names one of `FR`, `NFR`, `UC`, `IC`
    unambiguously, use it. Otherwise ask which of the four this is, in one message.
 
-2. **Compute the next ID.** Read the relevant doc (`docs/requirements/functional-
+2. **Compute the next ID.** Read the relevant doc (`ai-docs/requirements/functional-
    requirements.md`, `non-functional-requirements.md`, `use-cases.md`, or
-   `docs/constraints/implementation-constraints.md`) and find the highest existing
+   `ai-docs/constraints/implementation-constraints.md`) and find the highest existing
    number for that prefix. The new ID is one higher, zero-padded to 3 digits (ignore `_EXAMPLE_`
    placeholders; with no real entries yet, the first ID is 001). Never
    reuse a number that was deprecated or superseded.

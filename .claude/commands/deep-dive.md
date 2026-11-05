@@ -10,14 +10,14 @@ specific question.
 
 ## Steps
 
-1. **Check for prior work, then explore read-only.** First look in `docs/deep-dives/`
+1. **Check for prior work, then explore read-only.** First look in `ai-docs/deep-dives/`
    for an existing note on this area; if there is one, read it, note its date, and
    verify it against the code rather than starting over. Then map the files and modules actually involved: structure, key
    abstractions, control/data flow, external dependencies, anything that stands out as
    a risk area (untested, tightly coupled, doing more than its name suggests). Stay
    descriptive — report what's there, and only editorialize about quality if asked to.
 
-2. **Cross-check against `docs/requirements/` and `docs/constraints/`.** For any
+2. **Cross-check against `ai-docs/requirements/` and `ai-docs/constraints/`.** For any
    FR/NFR/UC/IC that plausibly relates to this area, note whether the code appears to
    satisfy it. Phrase mismatches as **observations to verify**, not settled fact —
    your read of the code or the docs' currency could both be wrong. If something looks
@@ -27,9 +27,9 @@ specific question.
 3. **Summarize conversationally first.** The point of a deep dive is usually an
    immediate answer, not a file.
 
-4. **Save findings to `docs/deep-dives/<slug>.md`**, dated (absolute date from `date +%F`, plus `git rev-parse --short HEAD` if this is a
+4. **Save findings to `ai-docs/deep-dives/<slug>.md`**, dated (absolute date from `date +%F`, plus `git rev-parse --short HEAD` if this is a
    git repo, so a later reader can judge how stale it is), with the question that
-   prompted it at the top (see `docs/deep-dives/README.md` for why). Confirm before
+   prompted it at the top (see `ai-docs/deep-dives/README.md` for why). Confirm before
    overwriting an existing file with the same slug — a later deep dive on the same
    area might be meant to update it or might be a different question that deserves its
    own name.

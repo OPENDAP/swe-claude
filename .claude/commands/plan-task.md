@@ -8,7 +8,7 @@ Handle a task: $ARGUMENTS
 ## Steps
 
 1. **Resolve new vs. existing.** If `$ARGUMENTS` is a `TASK-###` ID already present
-   in `docs/tasks/TASK-LOG.md`, read that entry and resume from wherever it left off.
+   in `ai-docs/tasks/TASK-LOG.md`, read that entry and resume from wherever it left off.
    If `$ARGUMENTS` is empty, ask for a short description. Otherwise treat it as a new
    task.
 
@@ -27,23 +27,23 @@ Handle a task: $ARGUMENTS
    the task creeps into a redesign nobody signed up for. Pin the boundary down
    before assigning an ID.
 
-3. **Search `docs/requirements/` and `docs/constraints/` for anything related.** A
+3. **Search `ai-docs/requirements/` and `ai-docs/constraints/` for anything related.** A
    task doesn't need requirement backing the way a feature does — retrofitting tests
    onto legacy code, or bumping a dependency, usually predates any written
    requirement — so finding nothing is a normal outcome, not a blocker. If something
    *is* related, note it rather than asserting a connection that isn't really there.
 
-4. **Assign the next `TASK-###` ID** (read `docs/tasks/TASK-LOG.md`, find the
+4. **Assign the next `TASK-###` ID** (read `ai-docs/tasks/TASK-LOG.md`, find the
    highest existing number, increment) and append a new section following the
    existing format, `Status: Open`.
 
-5. **Draft the plan** using the shape in `plans/_template-task.md`: scope (in/out),
+5. **Draft the plan** using the shape in `ai-plans/_template-task.md`: scope (in/out),
    approach, and — for anything mechanical — how completeness gets checked (a
    `grep` count before and after, an enumerated list checked off) rather than "done
-   when it looks done." Write it to `plans/task-<slug>-plan.md`. Confirm before
+   when it looks done." Write it to `ai-plans/task-<slug>-plan.md`. Confirm before
    overwriting an existing file.
 
-6. **Update the task's status to `Plan Ready`** in `docs/tasks/TASK-LOG.md` and link
+6. **Update the task's status to `Plan Ready`** in `ai-docs/tasks/TASK-LOG.md` and link
    the plan file. Leave `Done` for the user to set once the work actually lands and
    is verified — not something to self-report from having written a plan.
 

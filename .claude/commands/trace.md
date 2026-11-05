@@ -9,11 +9,11 @@ If `$ARGUMENTS` is empty or doesn't look like a `PREFIX-###` ID, ask for one.
 
 ## Steps
 
-1. **Find the definition.** Locate the ID's own entry in `docs/requirements/`,
-   `docs/constraints/`, `docs/decisions/DECISIONS.md`, `docs/bugs/BUG-LOG.md` (for a
-   `BUG-###`), or `docs/tasks/TASK-LOG.md` (for a `TASK-###`) and quote it briefly.
+1. **Find the definition.** Locate the ID's own entry in `ai-docs/requirements/`,
+   `ai-docs/constraints/`, `ai-docs/decisions/DECISIONS.md`, `ai-docs/bugs/BUG-LOG.md` (for a
+   `BUG-###`), or `ai-docs/tasks/TASK-LOG.md` (for a `TASK-###`) and quote it briefly.
 
-2. **Search the whole repo for other references** — `docs/`, `plans/`, and any source
+2. **Search the whole repo for other references** — `ai-docs/`, `ai-plans/`, and any source
    code or comments — for the literal ID string. Use `grep -rnw --exclude-dir=.git` (`-w` so `FR-001` can't match inside `FR-0010`)
    rather than guessing
    from memory.
@@ -21,10 +21,10 @@ If `$ARGUMENTS` is empty or doesn't look like a `PREFIX-###` ID, ask for one.
 3. **Report, grouped by kind:**
    - Which use case(s) reference it (for an FR/NFR).
    - Which FR/NFR it references (for a UC).
-   - Which plan(s) in `plans/` cite it (feature plans or bugfix plans), and where.
-   - Which bug(s) in `docs/bugs/BUG-LOG.md` cite it, if it's an FR/NFR/UC being
+   - Which plan(s) in `ai-plans/` cite it (feature plans or bugfix plans), and where.
+   - Which bug(s) in `ai-docs/bugs/BUG-LOG.md` cite it, if it's an FR/NFR/UC being
      violated.
-   - Which task(s) in `docs/tasks/TASK-LOG.md` cite it, if it's an FR/NFR/UC/IC that
+   - Which task(s) in `ai-docs/tasks/TASK-LOG.md` cite it, if it's an FR/NFR/UC/IC that
      informed a maintenance task.
    - Any code/comment references found.
 

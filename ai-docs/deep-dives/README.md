@@ -2,7 +2,7 @@
      have to be redone from scratch next time someone asks the same question. This
      is DESCRIPTIVE (what the code currently does) — it is not DECISIONS.md (why a
      choice was made) and not a requirement doc (what the system should do). If code
-     and docs/requirements disagree, a deep-dive note is where that gets flagged for
+     and ai-docs/requirements disagree, a deep-dive note is where that gets flagged for
      someone to resolve, not where it gets silently reconciled either direction. -->
 
 # Deep Dives

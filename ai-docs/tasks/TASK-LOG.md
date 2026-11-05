@@ -25,7 +25,7 @@ needed).
 **Created:** YYYY-MM-DD
 **Related requirements/constraints:** None found — `parser/` predates FR/NFR/UC
 tracking in this repo
-**Plan:** `plans/task-parser-test-coverage-plan.md`
+**Plan:** `ai-plans/task-parser-test-coverage-plan.md`
 
 **Scope:** Every public function in `parser/`, tested against the fixtures already
 in `parser/testdata/`. Does not include refactoring the module itself, even where

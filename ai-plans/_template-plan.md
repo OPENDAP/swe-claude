@@ -1,4 +1,4 @@
-<!-- Shape for every plan written to plans/. /plan-feature follows this structure.
+<!-- Shape for every plan written to ai-plans/. /plan-feature follows this structure.
      This file itself is never a real plan — copy the shape, don't edit this one. -->
 
 # Plan: {{FEATURE NAME}}

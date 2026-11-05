@@ -6,13 +6,17 @@
 #   -c FILE   link this directory's FILE (default CLAUDE.md) as TARGET_DIR/CLAUDE.md,
 #             e.g. -c CLAUDE-bes.md
 #
-# Links .claude, docs, plans and CLAUDE.md from this directory into TARGET_DIR:
-#   docs, plans  if TARGET_DIR already has one, link it as ai-docs / ai-plans instead
-#   .claude      if TARGET_DIR already has one, report it and leave it alone
-#   CLAUDE.md    an existing CLAUDE.md is moved to CLAUDE.md.orig first; one that
-#                already links to a different CLAUDE file here is re-pointed
+# Links .claude, ai-docs, ai-plans and CLAUDE.md from this directory into TARGET_DIR:
+#   ai-docs, ai-plans  if TARGET_DIR already has one that isn't ours, report it and
+#                      leave it alone
+#   .claude            if TARGET_DIR already has one, report it and leave it alone
+#   CLAUDE.md          an existing CLAUDE.md is moved to CLAUDE.md.orig first; one that
+#                      already links to a different CLAUDE file here is re-pointed
+# Links made by older versions of this script (docs or ai-docs -> $SRC/docs, and
+# the same for plans) are removed and replaced by the ai-docs / ai-plans links.
 # If TARGET_DIR is in a git work tree, the new names are added to that repo's
-# .git/info/exclude so they never show up in 'git status'.
+# .git/info/exclude so they never show up in 'git status', and the entries for
+# removed docs / plans links are taken out.
 # Safe to re-run: links that already point here are left as they are.
 # Exit status is 1 if anything could not be linked (e.g. the project has its own .claude).
 #
@@ -59,8 +63,9 @@ TARGET=$(cd "$1" 2>/dev/null && pwd -P) || { warn "not a directory: $1"; exit 1;
 
 say "Linking $SRC into $TARGET"
 
-excludes=""   # space-separated names to add to .git/info/exclude
-renamed=""    # names that had to be linked under an ai- prefix
+excludes=""        # space-separated names to add to .git/info/exclude
+stale_excludes=""  # names of removed old links to take out of .git/info/exclude
+removed=""         # names of old links removed (matters only in a dry run)
 status=0
 
 # make_link NAME DEST: link $SRC/NAME as $TARGET/DEST
@@ -94,12 +99,26 @@ else
     make_link .claude .claude
 fi
 
-# docs, plans: fall back to ai-<name> when the project already has its own.
-for name in docs plans; do
-    if exists "$TARGET/$name" && ! is_our_link "$TARGET/$name" "$name"; then
-        is_our_link "$TARGET/ai-$name" "$name" ||
-            warn "$name already exists in $TARGET; linking swe-claude's $name as ai-$name"
-        make_link "$name" "ai-$name" && renamed="$renamed $name"
+# Remove links made by older versions of this script, when swe-claude's
+# directories were docs and plans (linked as docs/plans or ai-docs/ai-plans).
+for old in docs plans; do
+    for dest in "$old" "ai-$old"; do
+        is_our_link "$TARGET/$dest" "$old" || continue
+        say "remove: $dest (old link to $SRC/$old)"
+        if run rm "$TARGET/$dest"; then
+            removed="$removed $dest"
+            [ "$dest" = "$old" ] && stale_excludes="$stale_excludes $dest"
+        else
+            status=1
+        fi
+    done
+done
+
+for name in ai-docs ai-plans; do
+    case " $removed " in *" $name "*) was_removed=1 ;; *) was_removed=0 ;; esac
+    if [ "$dry_run" -eq 1 ] && [ "$was_removed" -eq 1 ]; then   # nothing really removed, so don't re-check
+        say "link: $name -> $SRC/$name"
+        excludes="$excludes $name"
     else
         make_link "$name" "$name"
     fi
@@ -147,10 +166,19 @@ else
 fi
 
 # Keep the links out of the project's git status.
-if [ "$in_git" -eq 1 ] && [ -n "$excludes" ]; then
+if [ "$in_git" -eq 1 ] && [ -n "$excludes$stale_excludes" ]; then
     ex=$(git -C "$TARGET" rev-parse --git-path info/exclude)
     case $ex in /*) ;; *) ex="$TARGET/$ex" ;; esac
     prefix=$(git -C "$TARGET" rev-parse --show-prefix)
+    for name in $stale_excludes; do
+        pat="/$prefix$name"
+        grep -qxF "$pat" "$ex" 2>/dev/null || continue
+        say "git:  remove $pat from $ex"
+        if [ "$dry_run" -eq 0 ]; then
+            { grep -vxF "$pat" "$ex" > "$ex.tmp.$$"; [ $? -le 1 ]; } &&
+                mv "$ex.tmp.$$" "$ex" || { rm -f "$ex.tmp.$$"; status=1; }
+        fi
+    done
     for name in $excludes; do
         is_tracked "$name" && continue          # excluding a tracked path does nothing
         # No trailing slash: git sees a symlink as a file, not a directory.
@@ -162,9 +190,5 @@ if [ "$in_git" -eq 1 ] && [ -n "$excludes" ]; then
         fi
     done
 fi
-
-for name in $renamed; do
-    say "note: CLAUDE.md refers to $name/, which is ai-$name/ in this project"
-done
 
 exit $status

@@ -3,7 +3,7 @@ description: First-time setup — interview the user and seed the requirement do
 ---
 
 Set up this project's requirement docs for the first time. This is for a project that
-either has no real content in `docs/requirements/` yet, or is having this template
+either has no real content in `ai-docs/requirements/` yet, or is having this template
 folded into an existing codebase.
 
 ## Steps
@@ -39,7 +39,7 @@ folded into an existing codebase.
    as you go — leave them only in files where nothing real was added yet, so the
    shape is still visible.
 
-5. **Do not write `plans/` or `docs/decisions/DECISIONS.md` content** — those fill in
+5. **Do not write `ai-plans/` or `ai-docs/decisions/DECISIONS.md` content** — those fill in
    as work actually happens, not from a first interview.
 
 6. **Report back** what was written and, just as importantly, what's still `TBD` or

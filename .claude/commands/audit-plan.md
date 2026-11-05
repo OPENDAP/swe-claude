@@ -1,18 +1,18 @@
 ---
 description: Check a plan's requirement citations against the requirement docs — reports gaps, changes nothing
-argument-hint: <path to plan file, e.g. plans/password-reset-plan.md>
+argument-hint: <path to plan file, e.g. ai-plans/password-reset-plan.md>
 ---
 
 Audit the plan at: $ARGUMENTS
 
-If `$ARGUMENTS` is empty, list the files in `plans/` (excluding `_template-plan.md`,
+If `$ARGUMENTS` is empty, list the files in `ai-plans/` (excluding `_template-plan.md`,
 `_template-bugfix.md`, and `_template-task.md`) and ask which one. If there's exactly
 one candidate, confirm before proceeding rather than assuming.
 
 ## Steps
 
 1. **Read the plan file in full.** Note whether it's a feature plan, a bugfix plan
-   (`plans/bugfix-*`), or a task plan (`plans/task-*`) — a bugfix plan is expected to
+   (`ai-plans/bugfix-*`), or a task plan (`ai-plans/task-*`) — a bugfix plan is expected to
    cite a `BUG-###` and, unlike a feature plan, may legitimately cite zero FR/NFR/UC
    if the bug reveals behavior that was never documented in the first place; flag
    that as a gap to close via `/new-requirement`, not as a citation error. A task
@@ -23,9 +23,9 @@ one candidate, confirm before proceeding rather than assuming.
 2. **Extract every `FR-###` / `NFR-###` / `UC-###` / `IC-###` / `ADR-###` / `BUG-###` /
    `TASK-###` cited anywhere in it.**
 
-3. **Verify each cited ID actually exists** in the current `docs/requirements/`,
-   `docs/constraints/`, `docs/decisions/DECISIONS.md`, `docs/bugs/BUG-LOG.md`, and
-   `docs/tasks/TASK-LOG.md` files. Flag any that don't — a typo, a renumbered ID, or an
+3. **Verify each cited ID actually exists** in the current `ai-docs/requirements/`,
+   `ai-docs/constraints/`, `ai-docs/decisions/DECISIONS.md`, `ai-docs/bugs/BUG-LOG.md`, and
+   `ai-docs/tasks/TASK-LOG.md` files. Flag any that don't — a typo, a renumbered ID, or an
    ID that was invented rather than looked up. Also flag a cited entry whose Status is
    `Deprecated` or `Superseded` (the plan rests on something no longer current), and
    any ID that exists only as an `_EXAMPLE_` placeholder.
