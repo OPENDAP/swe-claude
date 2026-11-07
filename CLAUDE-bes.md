@@ -88,6 +88,35 @@ starting value (`Draft` for plans, `Open` for bug and task log entries) — neve
 option list; set `Created` / dates to today's actual date (run `date +%F` if you
 don't have it — never guess); and leave genuinely unknown fields `TBD`.
 
+## Work logs on plans
+
+Every plan in `ai-plans/` ends with an append-only `## Work log` section (see the
+templates). The first entry, written when the plan is created, quotes the prompt
+that initiated it verbatim. After that, **whenever you do work on a plan** —
+revising it, investigating for it, implementing or verifying a phase, changing its
+status — append an entry before ending the session's work on it: a heading stamped
+with the output of `date '+%F %H:%M %Z'` (run it — never guess the time) and a short
+summary of what was done and what's left. Don't edit or reorder earlier entries.
+
+## Branch & working-tree discipline
+
+Before making any change for a plan, task, or bug — a new plan file, a BUG-LOG or
+TASK-LOG entry, a work-log entry, or code — the working tree must be clean and the
+change must happen on its own branch, never directly on `main`. This applies
+uniformly to docs and code: drafting a plan, logging a bug/task, and implementing
+one all happen on that item's branch.
+
+- **Check first:** run `git status` before touching anything. If there are
+  uncommitted edits, stop and ask the user whether to commit, stash, or discard
+  them — don't layer new work on top of an already-dirty tree.
+- **One branch per item:** before the first edit, confirm whether an existing
+  branch already covers this item or a new one is needed. Name new branches
+  `jhrg/<slug>`, matching the existing convention (e.g. `jhrg/sd-debug-log`) — a
+  short kebab-case description of the plan/task/bug, not the raw ID.
+- **Always ask before creating or switching branches** and confirm the name with
+  the user first, even when the tree is clean — creating/switching branches
+  changes shared git state, so it's never done silently.
+
 ## Custom commands available in this repo
 
 | Command | Does |
@@ -169,3 +198,10 @@ baselines); they load when you work on matching files.
 `.clang-tidy` that runs clean; a Doxygen comment on every public function in an
 installed header. None of these is in place yet — don't enforce them or add the
 tooling unless asked.
+
+## Plan mode
+
+For anything nontrivial, prefer Claude Code's built-in plan mode (`Shift+Tab` twice)
+combined with `/plan-feature` — read the requirements, think through the approach, and
+present the plan before touching code. Read-only research and planning shouldn't need
+write access to the codebase.

@@ -39,11 +39,17 @@ If `$ARGUMENTS` is empty, ask for a short feature name or description and stop.
      flagged tension the user can decide on, not a silent workaround and not a silent
      violation.
    - Open questions are genuine unknowns, not gaps papered over with a guess.
+   - The `## Work log` section gets its first entry: a `Plan created` heading stamped
+     with the output of `date '+%F %H:%M %Z'` (run it — never guess), the initiating
+     prompt quoted verbatim (`/plan-feature $ARGUMENTS`, plus any other instructions
+     the user gave in that message), and a one-to-three-line summary of what was done.
 
 6. **Write the plan to `ai-plans/<slug>-plan.md`**, where `<slug>` is the feature name in
    kebab-case. (If you're in plan mode, present the plan and write the file once plan
    mode is exited or approved — don't try to write it from inside plan mode.) If that file already exists, ask before overwriting — don't clobber a
-   plan that might be mid-review.
+   plan that might be mid-review. If the user wants the existing plan revised
+   instead, keep its work log and append a new timestamped entry summarizing the
+   revision and quoting the prompt that asked for it.
 
 7. **Summarize back to the user:**
    - Which FR/NFR/UC IDs the plan covers.

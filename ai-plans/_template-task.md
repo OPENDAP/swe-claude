@@ -63,3 +63,24 @@ Genuine unknowns — not filled with a plausible guess. Each should block the ta
 until answered, or say why it doesn't.
 
 - ...
+
+## Work log
+
+Append-only, oldest first. One entry each time work is done on this plan — drafting,
+revising, investigating, implementing a phase, verifying. Get the timestamp from
+`date '+%F %H:%M %Z'`; never guess it. Don't rewrite earlier entries — add a new one.
+
+### {{YYYY-MM-DD HH:MM TZ}} — Plan created
+
+**Prompt:**
+
+> {{the prompt that initiated this plan, verbatim — the slash command and its
+> arguments, plus any other instructions the user gave in that message}}
+
+{{One to three lines: what was done in this session (e.g. requirements read, IDs
+traced, plan drafted).}}
+
+### {{YYYY-MM-DD HH:MM TZ}} — {{short title of the work}}
+
+{{One to three lines: what was done, what changed (files, phases, status), and
+anything left unfinished.}}

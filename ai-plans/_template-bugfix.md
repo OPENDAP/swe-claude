@@ -49,3 +49,24 @@ or existing) should guard against regression.
 
 What this fix deliberately does not address (e.g. a related but distinct bug, or a
 deeper redesign) — so it isn't assumed to be covered.
+
+## Work log
+
+Append-only, oldest first. One entry each time work is done on this plan — drafting,
+revising, investigating, implementing a phase, verifying. Get the timestamp from
+`date '+%F %H:%M %Z'`; never guess it. Don't rewrite earlier entries — add a new one.
+
+### {{YYYY-MM-DD HH:MM TZ}} — Plan created
+
+**Prompt:**
+
+> {{the prompt that initiated this plan, verbatim — the slash command and its
+> arguments, plus any other instructions the user gave in that message}}
+
+{{One to three lines: what was done in this session (e.g. requirements read, IDs
+traced, plan drafted).}}
+
+### {{YYYY-MM-DD HH:MM TZ}} — {{short title of the work}}
+
+{{One to three lines: what was done, what changed (files, phases, status), and
+anything left unfinished.}}

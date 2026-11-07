@@ -46,8 +46,15 @@ Handle a bug: $ARGUMENTS
 6. **Draft the fix plan** using the shape in `ai-plans/_template-bugfix.md`: root cause,
    related requirements, fix approach (and why that scope, not narrower or broader),
    regression risk, and verification steps built from the reproduction steps in
-   `ai-docs/bugs/BUG-LOG.md`. Write it to `ai-plans/bugfix-<slug>-plan.md`. Confirm before
-   overwriting an existing file.
+   `ai-docs/bugs/BUG-LOG.md`. Give the `## Work log` section its first entry: a
+   `Plan created` heading stamped with the output of `date '+%F %H:%M %Z'` (run it —
+   never guess), the initiating prompt quoted verbatim (`/fix-bug $ARGUMENTS`, plus any
+   other instructions the user gave in that message), and a one-to-three-line summary
+   of what was done (e.g. bug logged, root cause traced to X, plan drafted). Write it
+   to `ai-plans/bugfix-<slug>-plan.md`. Confirm before overwriting an existing file.
+   When resuming a bug whose plan already exists, don't start a new work log —
+   append a timestamped entry to the existing one quoting the resuming prompt and
+   summarizing what this session did.
 
 7. **Update the bug's status to `Fix Planned`** in `ai-docs/bugs/BUG-LOG.md` and link the
    plan file. **Never set `Status: Fixed` yourself** — that's a claim about verified
